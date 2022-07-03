@@ -28,4 +28,18 @@ const exampleOne = () => {
   }
 }
 
+// Class fields
+class Vehicle1 {
+  color: string;
+
+  constructor(color: string) {
+    this.color = color;
+  }
+}
+
+class Vehicle2 {
+  // initialization shortcut, same as Vehicle1
+  constructor(public color: string) {}
+}
+
 exampleOne()
