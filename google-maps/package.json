@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "faker": "^5.5.3",
+    "@types/faker": "^5.5.9",
+    "@types/google.maps": "^3.49.2"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "scripts": {
+    "run": "parcel index.html"
+  }
+}
