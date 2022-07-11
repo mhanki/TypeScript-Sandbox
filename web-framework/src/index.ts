@@ -1,9 +1,7 @@
 import { User } from './models/User';
 
-const newUser = { id: 1 }
+const collection = User.buildUserCollection();
 
-const user = User.buildUser(newUser);
+collection.on('change', () => console.log(collection));
 
-user.on('change', () => { console.log(user) });
-
-user.fetch();
+collection.fetch();
