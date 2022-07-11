@@ -27,17 +27,10 @@ export class Model<T extends HasId> {
     private sync: Sync<T>
   ) { }
 
-  get on() {
-    return this.events.on;
-  }
-
-  get trigger() {
-    return this.events.trigger;
-  }
-
-  get get() {
-    return this.attributes.get;
-  }
+  // These shorthand assignments only work if the attributes are not being assigned in the constructor body, but beforehand (either as constructor arguments, or via direct assignment outside the constructor method)
+  on = this.events.on;
+  trigger = this.events.trigger;
+  get = this.attributes.get;
 
   set(updatedData: T): void {
     this.attributes.set(updatedData);
