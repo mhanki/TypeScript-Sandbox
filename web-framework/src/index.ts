@@ -1,9 +1,9 @@
 import { User } from './models/User';
 
-const user = new User({ id: 1 });
+const newUser = { id: 1 }
 
-user.on('save', () => console.log(user));
+const user = User.buildUser(newUser);
 
-user.set({ name: 'New Name'})
+user.on('change', () => { console.log(user) });
 
-user.save();
+user.fetch();
