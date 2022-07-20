@@ -1,4 +1,4 @@
-/* Decorators */
+/* --------- Decorators ---------- */
 
 @classDecorator
 class Boat {
@@ -49,5 +49,51 @@ function logError(errorMessage: string) {
         console.log(errorMessage);
       }
     }
+  }
+}
+
+
+
+/* --------- Metadata ---------- */
+
+import 'reflect-metadata'
+
+/* const plane = {
+  color: 'red'
+};
+
+Reflect.defineMetadata('note', 'hi there!', plane);
+console.log(plane);
+
+const note = Reflect.getMetadata('note', plane);
+console.log(note);
+
+Reflect.defineMetadata('note', '🌶️', plane, 'color');
+const colorNote = Reflect.getMetadata('note', plane, 'color');
+console.log(colorNote); */
+
+@printMetadata
+class Plane {
+  color: string = 'red'
+
+  @markFunction('HI THERE!')
+  fly(): void { 
+    console.log('vrrrrrrrr');
+  }
+}
+
+function markFunction(secretInfo: string) { 
+  return function(target: Plane, key: string) {
+    Reflect.defineMetadata('secret', secretInfo, target, key);
+  }
+}
+
+/* const secret = Reflect.getMetadata('secret', Plane.prototype, 'fly');
+console.log(secret); */
+
+function printMetadata(target: typeof Plane) {  // typeof Plane is a reference to the constructor function
+  for (let key in target.prototype) { // only works with ES5
+    const secret = Reflect.getMetadata('secret', target.prototype, key);
+    console.log(secret);
   }
 }
